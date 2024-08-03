@@ -1,0 +1,44 @@
+!-- <h3 *ngIf="!isineditmode; else ineditmode">
+    Add product 
+    </h3>
+
+    <ng-template #ineditmode>
+        <h3>
+            update product 
+            </h3>
+            </ng-template> 
+            <h3>
+                {{!isineditmode ? 'add product': 'update product'}} 
+                </h3>
+    <form [formGroup]="proddform" (ngSubmit)="onprodAdd()">
+        <div class="form-group">
+            <label for="pname">product name </label>
+            <input formControlName="pname" type="text" class="form-control" id="pname">
+            </div>  
+            <div class="form-group">
+                <label for="pstatus">product status </label>
+                <select
+                 formControlName="pstatus" 
+                 type="text"
+                  class="form-control"
+                   id="pstatus"
+                   >
+                   <option value="in-progresss">in-progresss</option>
+                   <option value="dispatched">dispatched</option>
+                   <option value="delivered">delivered</option>
+               </select>
+                </div>    
+                <div class="form-group">
+                    <label for="canreturn">can return</label>
+                    <select formControlName="canreturn" id="canreturn" class="form-control">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        </select>
+                        </div>
+                        <div>
+                         <button type="submit" class="btn btn-info btn-sm" *ngIf="!isineditmode">Add product</button>
+                         <button type="button" class="btn btn-info btn-sm" *ngIf="isineditmode">Update product</button>
+                         </div>   
+                        </form>
+
+                
